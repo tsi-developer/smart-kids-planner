@@ -1,0 +1,17 @@
+
+
+
+
+Hello, my name is tsige, and this is my final project: Smart Kids Daily Planner.
+
+The problem I wanted to solve is that parents need a simple way to organize their children's daily routines.
+
+My solution is a full‑stack web app that lets parents add tasks, manage children, and receive email notifications.
+
+I built the frontend using HTML, CSS, and JavaScript. The backend is built with Node.js and Express. For email notifications, I used Nodemailer with Mailtrap.
+
+Let me show you the demo. Here is the planner form. Here is the children management screen. And here is the email notification working in Postman.
+
+Some challenges I faced were configuring Mailtrap and connecting the frontend to the backend. But I solved them and now the project works fully.
+
+In conclusion, the project meets all final deliverables: a working frontend, backend email logic, and full documentation.

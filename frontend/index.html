@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Smart Kids Daily Planner</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+
+<body>
+
+<!-- HEADER -->
+<header class="main-header">
+    <div class="header-left">
+        <img src="assets/logo.png" class="header-logo">
+        <h2>Smart Kids Daily</h2>
+    </div>
+
+    <div class="header-right">
+        <div class="header-search">
+            <input type="text" id="searchInput" placeholder="Search...">
+            <i class="fa-solid fa-magnifying-glass"></i>
+        </div>
+
+        <i class="fa-solid fa-bell header-bell"></i>
+        <img src="assets/profile.jpg" class="header-profile">
+    </div>
+</header>
+
+<!-- SIDEBAR -->
+<div class="sidebar" id="sidebar">
+    <div class="sidebar-header">
+        <img src="assets/profile.jpg" class="sidebar-profile">
+        <h3 class="sidebar-username">Parent</h3>
+    </div>
+
+    <h2 class="sidebar-title">Menu</h2>
+
+    <div class="sidebar-item" data-screen="home"><i class="fa-solid fa-house"></i> Home</div>
+    <div class="sidebar-item" data-screen="planner"><i class="fa-solid fa-calendar"></i> Planner</div>
+    <div class="sidebar-item" data-screen="children"><i class="fa-solid fa-children"></i> Children</div>
+    <div class="sidebar-item" data-screen="settings"><i class="fa-solid fa-gear"></i> Settings</div>
+
+    <hr class="sidebar-divider">
+
+    <div class="sidebar-item" data-screen="notifications"><i class="fa-solid fa-bell"></i> Notifications</div>
+    <div class="sidebar-item" data-screen="account"><i class="fa-solid fa-user"></i> Parent Account</div>
+    <div class="sidebar-item" data-screen="help"><i class="fa-solid fa-circle-info"></i> Help & Support</div>
+    <div class="sidebar-item" data-screen="logout"><i class="fa-solid fa-right-from-bracket"></i> Logout</div>
+</div>
+
+<!-- SIDEBAR TOGGLE -->
+<div class="sidebar-toggle" id="sidebarToggle">
+    <i class="fa-solid fa-bars"></i>
+</div>
+
+<!-- HERO -->
+<header class="hero">
+    <div class="overlay">
+        <h1>Smart Kids Daily Planner</h1>
+        <p>Organize your child's day with fun, healthy, and smart routines.</p>
+    </div>
+</header>
+
+<!-- DASHBOARD -->
+<section class="dashboard">
+
+    <div class="app-card" data-category="study">
+        <img src="assets/study.jpg">
+        <h3>Study</h3>
+    </div>
+
+    <div class="app-card" data-category="meals">
+        <img src="assets/healthy food kids.jpg">
+        <h3>Meals</h3>
+    </div>
+
+    <div class="app-card" data-category="sleep">
+        <img src="assets/child sleeping.jpg">
+        <h3>Sleep</h3>
+    </div>
+
+    <div class="app-card" data-category="activities">
+        <img src="assets/kids playin.jpg">
+        <h3>Activities</h3>
+    </div>
+
+    <div class="app-card" data-category="tasks">
+        <img src="assets/task.jpg">
+        <h3>Tasks</h3>
+    </div>
+
+</section>
+
+<!-- MAIN SCREENS -->
+<main>
+
+    <!-- HOME SCREEN -->
+    <section id="screen-home" class="app-screen active-screen">
+        <section class="form-panel">
+            <h2>Add Daily Planner</h2>
+
+            <form id="plannerForm">
+
+                <label>Select Child</label>
+                <select id="child_id" required></select>
+
+                <label>Parent Email</label>
+                <input type="email" id="parent_email" required>
+
+                <label>Date</label>
+                <input type="date" id="date" required>
+
+                <label>Category</label>
+                <select id="category" required>
+                    <option value="study">Study</option>
+                    <option value="meals">Meals</option>
+                    <option value="sleep">Sleep</option>
+                    <option value="activities">Activities</option>
+                    <option value="tasks">Tasks</option>
+                </select>
+
+                <label>Title</label>
+                <input type="text" id="title" required>
+
+                <label>Time</label>
+                <input type="time" id="time" required>
+
+                <label>Notes</label>
+                <textarea id="notes" required></textarea>
+
+                <button type="submit" class="submit-btn">Submit</button>
+            </form>
+
+            <div id="loading" class="msg loading">Submitting...</div>
+            <div id="success" class="msg success">Task submitted successfully!</div>
+            <div id="error" class="msg error">Something went wrong. Try again.</div>
+        </section>
+    </section>
+
+    <!-- PLANNER SCREEN -->
+    <section id="screen-planner" class="app-screen">
+        <h2 class="dash-title">Today's Planner</h2>
+
+        <div class="planner-grid">
+
+            <div class="planner-card">
+                <h3>Study</h3>
+                <div id="studyTasks" class="task-list"></div>
+            </div>
+
+            <div class="planner-card">
+                <h3>Meals</h3>
+                <div id="mealsTasks" class="task-list"></div>
+            </div>
+
+            <div class="planner-card">
+                <h3>Sleep</h3>
+                <div id="sleepTasks" class="task-list"></div>
+            </div>
+
+            <div class="planner-card">
+                <h3>Activities</h3>
+                <div id="activitiesTasks" class="task-list"></div>
+            </div>
+
+            <div class="planner-card">
+                <h3>Tasks</h3>
+                <div id="tasksTasks" class="task-list"></div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- CHILDREN SCREEN -->
+<section id="screen-children" class="app-screen">
+    <h2 class="dash-title">Children</h2>
+
+    <!-- Corrected Children Form -->
+    <form id="childrenForm" class="child-form">
+        <label>Child Name</label>
+        <input type="text" id="child_name" required>
+
+        <label>Child Age</label>
+        <input type="number" id="child_age" required>
+
+        <label>Photo URL (optional)</label>
+        <input type="text" id="child_photo">
+
+        <label>Parent Email</label>
+        <input type="email" id="child_parent_email" required>
+
+        <button type="submit" class="submit-btn">Add Child</button>
+    </form>
+
+    <h3>Child List</h3>
+    <div id="childrenList" class="children-list"></div>
+</section>
+
+    <section id="screen-settings" class="app-screen">
+    <h2>Settings</h2>
+
+    <div class="settings-box">
+
+        <label>Theme</label>
+        <select>
+            <option>Light</option>
+            <option>Dark</option>
+        </select>
+
+        <label>Language</label>
+        <select>
+            <option>English</option>
+            <option>Amharic</option>
+        </select>
+
+        <label>Parent Name</label>
+        <input type="text" placeholder="Enter your name">
+
+        <label>Email</label>
+        <input type="email" placeholder="Enter your email">
+
+    </div>
+</section>
+    <section id="screen-notifications" class="app-screen">
+    <h2>Notifications</h2>
+    <div class="notification-box">
+        <p>No new notifications.</p>
+        <p>Your planner is up to date.</p>
+        <p>Welcome back, tsige.</p>
+    </div>
+</section>
+    <section id="screen-account" class="app-screen">
+    <h2>Parent Account</h2>
+
+    <div class="account-box">
+
+        <img src="assets/profile.jpg" class="account-photo">
+
+        <h3 class="account-name">Parent Name</h3>
+        <p class="account-email">parent@example.com</p>
+
+        <div class="account-actions">
+            <button class="account-btn">Edit Profile</button>
+            <button class="account-btn">Change Email</button>
+            <button class="account-btn">Change Password</button>
+            <button class="account-btn danger">Delete Account</button>
+        </div>
+
+    </div>
+</section>
+
+    <section id="screen-help" class="app-screen"><h2>Help & Support</h2></section>
+    <section id="screen-logout" class="app-screen"><h2>Logout</h2></section>
+
+</main>
+
+<!-- BOTTOM NAV -->
+<nav class="bottom-nav">
+    <div class="nav-item active" data-screen="home"><i class="fa-solid fa-house"></i><span>Home</span></div>
+    <div class="nav-item" data-screen="planner"><i class="fa-solid fa-calendar"></i><span>Planner</span></div>
+    <div class="nav-item" data-screen="children"><i class="fa-solid fa-children"></i><span>Children</span></div>
+    <div class="nav-item" data-screen="settings"><i class="fa-solid fa-gear"></i><span>Settings</span></div>
+</nav>
+
+<script src="script.js"></script>
+
+</body>
+</html>

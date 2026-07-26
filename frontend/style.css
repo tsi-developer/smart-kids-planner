@@ -1,0 +1,526 @@
+/* ---------------------------------------------------------
+   GLOBAL
+--------------------------------------------------------- */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background: #f6f7fb;
+    color: #333;
+    overflow-x: hidden;
+}
+
+/* ---------------------------------------------------------
+   HEADER
+--------------------------------------------------------- */
+.main-header {
+    width: 100%;
+    padding: 15px 25px;
+    background: rgba(255, 182, 193, 0.25);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 999;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+}
+
+.header-left {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.header-logo {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+}
+
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.header-search {
+    display: flex;
+    align-items: center;
+    background: rgba(255,255,255,0.6);
+    padding: 8px 14px;
+    border-radius: 20px;
+    backdrop-filter: blur(6px);
+}
+
+.header-search input {
+    border: none;
+    background: transparent;
+    outline: none;
+    font-size: 14px;
+}
+
+.header-search i {
+    color: #ff7eb9;
+}
+
+.header-bell {
+    font-size: 22px;
+    color: #ff7eb9;
+    cursor: pointer;
+}
+
+.header-profile {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+
+/* ---------------------------------------------------------
+   SIDEBAR
+--------------------------------------------------------- */
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: -260px;
+    width: 260px;
+    height: 100%;
+    background: linear-gradient(180deg, #ffe3f4, #ffb6c1);
+    box-shadow: 4px 0 20px rgba(0,0,0,0.1);
+    padding: 20px;
+    transition: 0.3s ease;
+    z-index: 999;
+    border-radius: 0 25px 25px 0;
+}
+
+.sidebar-toggle {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    background: #ffb6c1;
+    padding: 10px 14px;
+    border-radius: 10px;
+    cursor: pointer;
+    z-index: 1000;
+}
+
+.sidebar-header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.sidebar-profile {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+}
+
+.sidebar-title {
+    font-size: 26px;
+    margin-bottom: 20px;
+    color: #444;
+}
+
+.sidebar-item {
+    padding: 14px 12px;
+    margin-bottom: 10px;
+    border-radius: 14px;
+    cursor: pointer;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: 0.3s ease;
+}
+
+.sidebar-item:hover {
+    background: #ffd6e8;
+    transform: translateX(5px);
+}
+
+.sidebar-item.active {
+    background: #ff7eb9;
+    color: white;
+}
+
+/* ---------------------------------------------------------
+   HERO
+--------------------------------------------------------- */
+.hero {
+    width: 100%;
+    height: 350px;
+    background-image: url("assets/kids learning banner.jpg");
+    background-size: cover;
+    background-position: center;
+    border-bottom-left-radius: 40px;
+    border-bottom-right-radius: 40px;
+    position: relative;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+}
+
+.overlay {
+    position: absolute;
+    bottom: 30px;
+    left: 30px;
+    color: white;
+    text-shadow: 0 3px 8px rgba(0,0,0,0.5);
+}
+
+.overlay h1 {
+    font-size: 34px;
+    margin: 0;
+}
+
+.overlay p {
+    font-size: 16px;
+    margin-top: 5px;
+}
+
+/* ---------------------------------------------------------
+   DASHBOARD
+--------------------------------------------------------- */
+.dashboard {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    margin: 40px 0;
+    flex-wrap: wrap;
+}
+
+.app-card {
+    width: 200px;
+    background: linear-gradient(135deg, #ffb6c1, #ffd6e8);
+    border-radius: 25px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.12);
+    text-align: center;
+    padding-bottom: 20px;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+.app-card img {
+    width: 100%;
+    height: 110px;
+    object-fit: cover;
+    border-radius: 25px 25px 0 0;
+}
+
+.app-card:hover {
+    transform: translateY(-10px) scale(1.03);
+    box-shadow: 0 12px 30px rgba(255,126,185,0.3);
+}
+
+/* ---------------------------------------------------------
+   APP SCREENS
+--------------------------------------------------------- */
+.app-screen {
+    display: none;
+    padding: 20px;
+    margin-bottom: 100px;
+}
+
+.active-screen {
+    display: block;
+}
+
+/* ---------------------------------------------------------
+   FORM PANEL
+--------------------------------------------------------- */
+.form-panel {
+    width: 90%;
+    max-width: 450px;
+    margin: auto;
+    background: white;
+    padding: 35px;
+    border-radius: 30px;
+    box-shadow: 0 10px 35px rgba(0,0,0,0.12);
+}
+
+label {
+    font-weight: 600;
+    margin-top: 15px;
+    display: block;
+}
+
+input, select, textarea {
+    width: 100%;
+    padding: 14px;
+    margin-top: 8px;
+    border-radius: 12px;
+    border: 1px solid #ccc;
+    background: #fff;
+}
+
+textarea {
+    height: 100px;
+}
+
+.submit-btn {
+    width: 100%;
+    padding: 16px;
+    background: #ff7eb9;
+    border: none;
+    color: white;
+    font-size: 20px;
+    border-radius: 14px;
+    margin-top: 25px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.submit-btn:hover {
+    background: #ff5fa5;
+}
+
+/* ---------------------------------------------------------
+   CHILDREN LIST
+--------------------------------------------------------- */
+.children-list {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.child-card {
+    background: white;
+    padding: 15px;
+    border-radius: 12px;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.15);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.child-card h4 {
+    margin: 0;
+    font-size: 18px;
+}
+
+.child-actions {
+    display: flex;
+    gap: 10px;
+}
+
+.child-btn {
+    background: #ffb6c1;
+    color: #333;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.child-btn:hover {
+    background: #ff7eb9;
+    color: white;
+}
+
+/* ---------------------------------------------------------
+   PLANNER GRID
+--------------------------------------------------------- */
+.planner-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 20px;
+    padding: 20px;
+}
+
+.planner-card {
+    background: #ffe3f4;
+    border-radius: 25px;
+    padding: 20px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+    text-align: center;
+    transition: 0.3s ease;
+}
+
+.planner-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 30px rgba(255,126,185,0.3);
+}
+
+/* ---------------------------------------------------------
+   BOTTOM NAV
+--------------------------------------------------------- */
+.bottom-nav {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 70px;
+    background: #ffb6c1;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    box-shadow: 0 -6px 25px rgba(0,0,0,0.12);
+    border-top-left-radius: 25px;
+    border-top-right-radius: 25px;
+}
+
+.nav-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 14px;
+    color: #555;
+    transition: 0.3s ease;
+}
+
+.nav-item.active {
+    color: #ff7eb9;
+    transform: scale(1.1);
+}
+
+/* ---------------------------------------------------------
+   RESPONSIVE
+--------------------------------------------------------- */
+@media (max-width: 768px) {
+    .app-card {
+        width: 150px;
+    }
+    .hero {
+        height: 250px;
+    }
+}
+
+@media (max-width: 480px) {
+    .app-card {
+        width: 120px;
+    }
+    .hero {
+        height: 220px;
+    }
+}
+.settings-box {
+    background: #ffe3f4;
+    padding: 12px;              
+    border-radius: 8px;        
+    margin-top: 15px;
+    width: 260px;               
+    display: flex;
+    flex-direction: column;
+    gap: 10px;                  
+}
+
+.settings-box label {
+    font-weight: bold;
+    font-size: 14px;            
+}
+
+.settings-box input,
+.settings-box select {
+    padding: 6px;                
+    font-size: 14px;            
+    border-radius: 6px;
+    border: 1px solid #ccc;
+}
+.account-box {
+    background: #ffe3f4;
+    padding: 20px;
+    border-radius: 10px;
+    margin-top: 20px;
+    max-width: 350px;
+    text-align: center;
+}
+
+.account-photo {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    margin-bottom: 10px;
+}
+
+.account-name {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.account-email {
+    font-size: 14px;
+    color: #555;
+    margin-bottom: 20px;
+}
+
+.account-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.account-btn {
+    padding: 10px;
+    border: none;
+    border-radius: 8px;
+    background: #ff8fcf;
+    color: white;
+    cursor: pointer;
+}
+
+.account-btn.danger {
+    background: #ff4d6d;
+}
+.task-card {
+    background: white;
+    padding: 12px;
+    border-radius: 12px;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.15);
+    margin-bottom: 10px;
+    text-align: left;
+}
+
+.task-actions {
+    margin-top: 10px;
+    display: flex;
+    gap: 10px;
+}
+
+.edit-btn, .delete-btn {
+    padding: 6px 10px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.edit-btn {
+    background: #ffb6c1;
+}
+
+.delete-btn {
+    background: #ff4d6d;
+    color: white;
+}
+/* MESSAGES */
+.msg {
+    display: none;
+    margin-top: 10px;
+    padding: 10px;
+    border-radius: 8px;
+    font-size: 14px;
+}
+
+.loading {
+    background: #fff3cd;
+    color: #856404;
+}
+
+.success {
+    background: #d4edda;
+    color: #155724;
+}
+
+.error {
+    background: #f8d7da;
+    color: #721c24;
+}
+
+/* HIGHLIGHTED PLANNER CARD */
+.highlight {
+    border: 3px solid #ff7eb9;
+    box-shadow: 0 0 15px rgba(255,126,185,0.5);
+}
